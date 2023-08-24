@@ -1,0 +1,7 @@
+type DAO_DB = record { id : principal; username : text };
+service : () -> {
+  getMembers : (principal) -> (text) query;
+  updateDAO : (DAO_DB) -> ();
+  updateUserName : (text) -> (text);
+  whoami : () -> (principal) query;
+}
