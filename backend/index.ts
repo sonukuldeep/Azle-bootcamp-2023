@@ -8,7 +8,7 @@ type Votes = Record<{
 }>;
 
 // variables
-const daoMembers = new Map<Principal, string>();
+const daoMembers = new Map<string, string>();
 const currentGame = 'puzzle';
 const proposal: Proposal = {
   question: 'What game should we develop next?',
@@ -23,36 +23,38 @@ export function whoami(): Principal {
   return ic.caller();
 }
 
+// principal to principal comparison does not work for some unknown reason
+// but if we convert both to string it works
 $update;
-export function setDaoMember(member: DAO_DB): void {
-  const id = Principal.fromText(member.id);
-  // how do i compare two principals
-  // current solution does not work
-  if (daoMembers.has(id) || !id._isPrincipal) {
-    console.log('invalid id');
-    return;
-  }
-  console.log(id.toString());
-  daoMembers.set(id, member.username);
+export function setDaoMember(member: string): void {
+  const id = ic.caller().toString();
+  if (daoMembers.has(id)) return;
+
+  console.log(id);
+  daoMembers.set(id, member);
 }
 
 $query;
-export function getMembers(principal: string): string {
-  console.log(Principal.fromText(principal));
-  const response = daoMembers.has(Principal.fromText(principal))
-    ? daoMembers.get(Principal.fromText(principal))
-    : 'data unavailable';
-  return response!;
+export function getMembers(principal: Principal): string {
+  if (!daoMembers.has(principal.toString())) return 'Not found';
+  return daoMembers.get(principal.toString())!;
 }
 
 $update;
 export function updateDaoUserName(username: string): string {
-  const caller = whoami();
+  const caller = ic.caller().toString();
   if (!daoMembers.has(caller)) {
-    return 'unauthorized';
+    return 'Not found';
   }
   daoMembers.set(caller, username);
   return 'success';
+}
+
+$update;
+export function exitFromDao(): string {
+  const caller = ic.caller().toString();
+  const res = daoMembers.delete(caller);
+  return res ? 'success' : 'failed';
 }
 
 $query;

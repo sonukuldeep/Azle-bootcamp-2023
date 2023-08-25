@@ -39,9 +39,7 @@
       <div id="manage-dao" class="wrapper">
         <div class="card">
           <h3>Enrole as DAO member</h3>
-          <form id="form-set-doa">
-            <label for="">Id:</label>
-            <input type="text" name="id" required />
+          <form id="set-doa">
             <label for="username">Username:</label>
             <input type="text" name="username" required />
             <input type="submit" value="Submit" />
@@ -49,12 +47,28 @@
         </div>
         <div class="card">
           <h3>Get DAO member</h3>
-          <form id="form-get-dao">
+          <form id="get-dao">
             <label for="">Id:</label>
             <input type="text" name="id" required />
             <input type="submit" value="Submit" />
           </form>
-          <h4 id="get-dao-member">abc</h4>
+          <h4 id="get-dao-msg"></h4>
+        </div>
+        <div class="card">
+          <h3>Update DAO member</h3>
+          <form id="update-dao">
+            <label for="">New username:</label>
+            <input type="text" name="id" required />
+            <input type="submit" value="Submit" />
+          </form>
+          <h4 id="update-dao-msg"></h4>
+        </div>
+        <div class="card">
+          <h3>Quit DAO membership</h3>
+          <form id="quit-dao">
+            <input type="submit" value="Submit" />
+          </form>
+          <h4 id="quit-dao-msg"></h4>
         </div>
       </div>
       <div id="vote" class="wrapper">
