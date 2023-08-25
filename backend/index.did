@@ -1,7 +1,13 @@
-type DAO_DB = record { id : principal; username : text };
+type DAO_DB = record { id : text; username : text };
+type Proposal = record { question : text; options : vec text };
+type Votes = record { game : text; noOfVotes : float64 };
 service : () -> {
-  getMembers : (principal) -> (text) query;
-  updateDAO : (DAO_DB) -> ();
-  updateUserName : (text) -> (text);
+  currentPole : () -> (Proposal) query;
+  getMembers : (text) -> (text) query;
+  loadGame : () -> (text) query;
+  setDaoMember : (DAO_DB) -> ();
+  updateDaoUserName : (text) -> (text);
+  voteForGame : (text) -> ();
+  votingStatus : () -> (vec Votes) query;
   whoami : () -> (principal) query;
 }

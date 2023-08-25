@@ -5,15 +5,29 @@
 }
 
 body {
-  // background-color: gray;
-  // min-height: 100vh;
-  // border: 1px solid red;
-}
-
-main {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  height: 100%;
+}
+
+.wrapper {
+  h3 {
+    margin-top: 0;
+  }
+
+  display: none; // ehages to grid on button press
+  grid-template-columns: repeat(2, 1fr);
+  // align-items: center;
+  justify-content: center;
+
+  .card {
+    margin: 5px;
+    padding: 10px;
+    border: 1px solid violet;
+    border-radius: 4px;
+  }
+}
+
+.wrapper.visible {
+  display: grid;
 }

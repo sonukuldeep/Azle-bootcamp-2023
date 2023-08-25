@@ -1,24 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/wAAAP8AAAD/AAAA/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/wAAAP8AAAD/AAAA/wAAAP8AAAAAAAAAAAAAAP8AAAD/AAAA/wAAAP8AAAD/AAAAAAAAAAAAAAAAAAAAcAAAAHAAAABwAAAA/wAAAAAAAAAAAAAAjwAAAI8AAAAAAAAAUAAAAP8AAABwAAAAcAAAAHAAAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAAAAAAB/AAAAUAAAAFAAAABQAAAAAAAAAAAAAAD/AAAA/wAAAAAAAAAAAAAAAAAAAFAAAABQAAAAUAAAABAAAAAAAAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAP8AAAD/AAAAAAAAAAAAAAAAAAAAAAAAAP8AAAD/AAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAD/AAAA/wAAAAAAAAAAAAAAAAAAAAAAAAD/AAAA/wAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAMAAAAP8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/wAAADAAAAAAAAAAAAAAAAAAAABQAAAAAAAAAP8AAAAAAAAA/wAAAAAAAAAAAAAA/wAAAAAAAAD/AAAAAAAAAFAAAAAAAAAAAAAAAAAAAAAAAAAAUAAAAAAAAABwAAAArwAAAP8AAAD/AAAA/wAAAP8AAACvAAAAcAAAAAAAAABQAAAAAAAAAAAAAAAAAAAAAAAAAFAAAAAAAAAAjwAAAK8AAAAAAAAAAAAAAAAAAAAAAAAA/wAAAI8AAAAAAAAAUAAAAAAAAAAAAAAAAAAAAAAAAABQAAAAAAAAAP8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/AAAAAAAAAFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMAAAADAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA//8AAPw/AADBgwAA9m8AAP//AAD+fwAA//8AAPPPAADzzwAA3/sAAPWvAAD4HwAA888AAPfvAAD//wAA//8AAA==" rel="icon" type="image/x-icon">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
-  <title>That DAO</title>
-</head>
-<body>
-  <main>
-    <h1>The caller is <span id="caller"></span></h1>
-    <div><button>Click me</button></div>
-    <form id="form">
-      <label for="">Id</label>
-      <input type="text" name="id">
-      <label for="username">Username:</label>
-      <input type="text" name="username">
-      <input type="submit" value="Button">
-    </form>
-  </main>
-  <script type="module" src="./main.ts"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/wAAAP8AAAD/AAAA/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/wAAAP8AAAD/AAAA/wAAAP8AAAAAAAAAAAAAAP8AAAD/AAAA/wAAAP8AAAD/AAAAAAAAAAAAAAAAAAAAcAAAAHAAAABwAAAA/wAAAAAAAAAAAAAAjwAAAI8AAAAAAAAAUAAAAP8AAABwAAAAcAAAAHAAAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAAAAAAB/AAAAUAAAAFAAAABQAAAAAAAAAAAAAAD/AAAA/wAAAAAAAAAAAAAAAAAAAFAAAABQAAAAUAAAABAAAAAAAAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAP8AAAD/AAAAAAAAAAAAAAAAAAAAAAAAAP8AAAD/AAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAD/AAAA/wAAAAAAAAAAAAAAAAAAAAAAAAD/AAAA/wAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAMAAAAP8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/wAAADAAAAAAAAAAAAAAAAAAAABQAAAAAAAAAP8AAAAAAAAA/wAAAAAAAAAAAAAA/wAAAAAAAAD/AAAAAAAAAFAAAAAAAAAAAAAAAAAAAAAAAAAAUAAAAAAAAABwAAAArwAAAP8AAAD/AAAA/wAAAP8AAACvAAAAcAAAAAAAAABQAAAAAAAAAAAAAAAAAAAAAAAAAFAAAAAAAAAAjwAAAK8AAAAAAAAAAAAAAAAAAAAAAAAA/wAAAI8AAAAAAAAAUAAAAAAAAAAAAAAAAAAAAAAAAABQAAAAAAAAAP8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/AAAAAAAAAFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMAAAADAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA//8AAPw/AADBgwAA9m8AAP//AAD+fwAA//8AAPPPAADzzwAA3/sAAPWvAAD4HwAA888AAPfvAAD//wAA//8AAA=="
+      rel="icon"
+      type="image/x-icon"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css"
+    />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.min.js"
+      integrity="sha512-bcfltY+lNLlNxz38yBBm/HLaUB1gTV6I0e+fahbF9pS6roIdzUytozWdnFV8ZnM6cSAG5EbmO0ag0a/fLZSG4Q=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+      defer
+    ></script>
+    <script type="module" src="./main.ts"></script>
+    <script src="game.js" defer></script>
+    <title>That DAO</title>
+  </head>
+  <body>
+    <nav>
+      <button data-id="game">Game</button>
+      <button data-id="manage-dao">Manage DAO</button>
+      <button data-id="vote">Vote</button>
+      <button data-id="about">About</button>
+      <button data-id="">Login</button>
+    </nav>
+    <h1>Welcome to Tiny game studio</h1>
+    <main>
+      <div id="game" class="wrapper visible">
+        <div id="canvas-container"></div>
+      </div>
+      <div id="manage-dao" class="wrapper">
+        <div class="card">
+          <h3>Enrole as DAO member</h3>
+          <form id="form-set-doa">
+            <label for="">Id:</label>
+            <input type="text" name="id" required />
+            <label for="username">Username:</label>
+            <input type="text" name="username" required />
+            <input type="submit" value="Submit" />
+          </form>
+        </div>
+        <div class="card">
+          <h3>Get DAO member</h3>
+          <form id="form-get-dao">
+            <label for="">Id:</label>
+            <input type="text" name="id" required />
+            <input type="submit" value="Submit" />
+          </form>
+          <h4 id="get-dao-member">abc</h4>
+        </div>
+      </div>
+      <div id="vote" class="wrapper">
+        <div class="card">
+          <form>
+            <select-template></select-template>
+            <input type="submit" value="Submit" />
+          </form>
+        </div>
+        <div class="card">
+          <vote-template></vote-template>
+        </div>
+      </div>
+      <div id="about" class="wrapper">
+        <div class="card">
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Amet est
+          quaerat asperiores? Quis harum recusandae consequatur inventore
+          numquam dolores doloremque quod, voluptatibus dignissimos cumque,
+          nulla dolorum. Fugiat fugit obcaecati neque.
+        </div>
+        <div class="card">
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Amet est
+          quaerat asperiores? Quis harum recusandae consequatur inventore
+          numquam dolores doloremque quod, voluptatibus dignissimos cumque,
+          nulla dolorum. Fugiat fugit obcaecati neque.
+        </div>
+      </div>
+    </main>
+  </body>
 </html>
