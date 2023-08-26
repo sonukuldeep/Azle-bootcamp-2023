@@ -32,7 +32,6 @@ button.addEventListener('click', async () => {
   button.setAttribute('disabled', 'true');
   const whoami = await backend.whoami();
   const user = whoami;
-  console.log(user.toText());
   button.innerText = user.toText();
   button.removeAttribute('disabled');
   loggedIn = true;
