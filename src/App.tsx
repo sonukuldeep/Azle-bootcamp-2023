@@ -1,5 +1,5 @@
 import { Toaster } from 'react-hot-toast';
-import { Navbar, Canvas, Dao } from './components';
+import { Navbar, Canvas, Dao, Fosset, Members } from './components';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 function App() {
   return (
@@ -10,8 +10,8 @@ function App() {
       <Routes>
         <Route path="" element={<Canvas />} />
         <Route path="dao" element={<Dao />} />
-        <Route path="fosset" element={<h1>Fosset</h1>} />
-        {/* <Route path="login" element={<h1>Hello world 4</h1>} /> */}
+        <Route path="members" element={<Members />} />
+        <Route path="fosset" element={<Fosset />} />
       </Routes>
     </BrowserRouter>
   );

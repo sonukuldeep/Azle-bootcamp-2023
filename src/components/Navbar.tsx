@@ -1,6 +1,4 @@
 import { NavLink } from 'react-router-dom';
-import { Actor, Identity, ActorSubclass, HttpAgent } from '@dfinity/agent';
-import { canisterId, createActor, idlFactory } from '../declarations/backend';
 import { useAuthContext } from '../Provider/AuthContextProvider';
 import { useUserContext } from '../Provider/ContextProvider';
 import { useEffect, useState } from 'react';
@@ -66,6 +64,12 @@ function Navbar() {
           className={({ isActive }) => (isActive ? 'selected' : '')}
         >
           DAO
+        </NavLink>
+        <NavLink
+          to="members"
+          className={({ isActive }) => (isActive ? 'selected' : '')}
+        >
+          Dao Members
         </NavLink>
         <NavLink
           to="fosset"

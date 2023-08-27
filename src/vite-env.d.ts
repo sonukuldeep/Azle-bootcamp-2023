@@ -17,3 +17,13 @@ type Auth = {
   actor: ActorSubclass<_SERVICE>;
   isAnonymousUser: boolean;
 };
+
+type Poles = {
+  question: string;
+  options: string[];
+};
+
+type PoleStatus = {
+  game: string;
+  noOfVotes: number;
+};

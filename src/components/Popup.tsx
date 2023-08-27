@@ -1,7 +1,16 @@
-import React, { useState } from 'react';
+import React, { ReactNode, useEffect, useState } from 'react';
 
-export default function Popup() {
+export default function Popup({
+  children,
+  isVisible,
+}: {
+  children: ReactNode;
+  isVisible: boolean;
+}) {
   const [modal, setModal] = useState(false);
+  useEffect(() => {
+    setModal((pre) => !pre);
+  }, [isVisible]);
 
   return (
     <div className={`modal ${modal ? 'modal-show' : 'modal-hide'}`}>
@@ -9,9 +18,9 @@ export default function Popup() {
       <div className="modal-content">
         {/* <!-- This is the actual modal/popup box --> */}
         <span className="modal-close" onClick={() => setModal(false)}>
-          <h3>Please content here</h3>
           &times;
         </span>
+        {children}
       </div>
     </div>
   );

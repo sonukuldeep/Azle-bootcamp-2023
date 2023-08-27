@@ -1,7 +1,7 @@
-import { $query, Principal, Record, ic, Vec, $update } from 'azle';
+import { $query, Principal, Record, ic, Vec, $update, nat } from 'azle';
 //types
 type DAO_DB = Record<{ id: string; username: string }>;
-type Proposal = Record<{ question: string; options: Vec<string> }>; // can i specify size here
+type Proposal = Record<{ question: string; options: Vec<string> }>;
 type Votes = Record<{
   game: string;
   noOfVotes: number;
@@ -14,7 +14,6 @@ const proposal: Proposal = {
   question: 'What game should we develop next?',
   options: ['Puzzle game', 'Open world', 'RPG'],
 };
-
 const votes: Votes[] = proposal.options.map((game) => ({ game, noOfVotes: 0 }));
 
 // functions
@@ -25,19 +24,29 @@ export function whoami(): Principal {
 
 // principal to principal comparison does not work for some unknown reason
 // but if we convert both to string it works
+// i have chck this countless times
 $update;
 export function setDaoMember(member: string): void {
   const id = ic.caller().toString();
-  if (daoMembers.has(id)) return;
+  if (daoMembers.has(id) || id === '2vxsx-fae') return;
   console.log(id);
   daoMembers.set(id, member);
 }
 
 $query;
-export function getMembers(principal: Principal): string {
+export function getMember(principal: Principal): string {
   if (!daoMembers.has(principal.toString())) return 'Not found';
   console.log(daoMembers);
   return daoMembers.get(principal.toString())!;
+}
+
+$query;
+export function getMembers(): Vec<DAO_DB> {
+  const members = Array.from(daoMembers, ([id, username]) => ({
+    id,
+    username,
+  }));
+  return members;
 }
 
 $update;
