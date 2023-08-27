@@ -4,6 +4,7 @@ import { canisterId, createActor, idlFactory } from '../declarations/backend';
 import { useAuthContext } from '../Provider/AuthContextProvider';
 import { useUserContext } from '../Provider/ContextProvider';
 import { useEffect, useState } from 'react';
+import authHelper from '../lib/authHelper';
 
 function Navbar() {
   const { authClient, defaultOptions } = useAuthContext();
@@ -16,9 +17,8 @@ function Navbar() {
       authClient.login({
         ...defaultOptions.loginOptions,
         onSuccess: async () => {
-          const identity = authClient.getIdentity() as unknown as Identity;
-          const principal = identity.getPrincipal();
-          const shortPrincipal = principal.toString().slice(0, 7);
+          const { principal } = authHelper(authClient);
+          const shortPrincipal = principal.toString().slice(0, 5);
           setUserInfo({
             logggedIn: true,
             daoMember: false,
@@ -38,10 +38,9 @@ function Navbar() {
   }
 
   useEffect(() => {
-    if (authClient !== null) {
-      const identity = authClient.getIdentity() as unknown as Identity;
-      const principal = identity.getPrincipal();
-      if (principal.toString() !== '2vxsx-fae') {
+    if (authClient) {
+      const { principal, isAnonymousUser } = authHelper(authClient);
+      if (!isAnonymousUser) {
         const shortPrincipal = principal.toString().slice(0, 7);
         setLoginText(shortPrincipal);
       }

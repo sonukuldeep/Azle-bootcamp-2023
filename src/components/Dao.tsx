@@ -1,6 +1,25 @@
 import { toast } from 'react-hot-toast';
+import { useAuthContext } from '../Provider/AuthContextProvider';
+import { useEffect, useState } from 'react';
+import authHelper from '../lib/authHelper';
+import { Principal } from '@dfinity/principal';
 
 function Dao() {
+  const { authClient } = useAuthContext();
+  const [auth, setAuth] = useState<Auth | null>(null);
+  const [formOneInput, setFromOneIput] = useState('');
+  const [formTwoInput, setFromTwoIput] = useState('');
+
+  useEffect(() => {
+    if (authClient) {
+      const { actor, identity, principal, isAnonymousUser } =
+        authHelper(authClient);
+      console.log(principal.toString());
+      if (isAnonymousUser) setAuth(null);
+      else setAuth({ actor, identity, principal, isAnonymousUser });
+    }
+  }, [authClient]);
+
   return (
     <>
       <h1 style={{ textAlign: 'center' }}>
@@ -8,19 +27,54 @@ function Dao() {
       </h1>
       <div id="manage-dao" className="dao-wrapper">
         <div className="card">
+          {/* form one */}
           <h3>Enrole as DAO member</h3>
           <form id="set-doa">
             <label htmlFor="username">Username:</label>
-            <input type="text" name="username" required />
-            <input type="submit" value="Submit" />
+            <input
+              type="text"
+              name="username"
+              required
+              value={formOneInput}
+              onChange={(e) => setFromOneIput(e.target.value)}
+            />
+            <input
+              type="button"
+              value="Submit"
+              onClick={() => {
+                if (auth) {
+                  auth.actor.setDaoMember(formOneInput);
+                  setFromOneIput('');
+                }
+              }}
+            />
           </form>
         </div>
         <div className="card">
+          {/* form two */}
           <h3>Get DAO member</h3>
           <form id="get-dao">
             <label htmlFor="">Id:</label>
-            <input type="text" name="id" required />
-            <input type="submit" value="Submit" />
+            <input
+              type="text"
+              name="id"
+              required
+              value={formTwoInput}
+              onChange={(e) => setFromTwoIput(e.target.value)}
+            />
+            <input
+              type="button"
+              value="Submit"
+              onClick={async () => {
+                if (auth) {
+                  const user = await auth.actor.getMembers(
+                    Principal.fromText(formTwoInput),
+                  );
+                  setFromTwoIput('');
+                  console.log(user);
+                }
+              }}
+            />
           </form>
           <h4 id="get-dao-msg"></h4>
         </div>

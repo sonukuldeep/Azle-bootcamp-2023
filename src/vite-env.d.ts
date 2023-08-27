@@ -10,3 +10,10 @@ type DefaultOptions = {
     maxTimeToLive: bigint;
   };
 };
+
+type Auth = {
+  identity: Identity;
+  principal: Principal;
+  actor: ActorSubclass<_SERVICE>;
+  isAnonymousUser: boolean;
+};
