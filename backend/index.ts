@@ -29,7 +29,6 @@ $update;
 export function setDaoMember(member: string): void {
   const id = ic.caller().toString();
   if (daoMembers.has(id)) return;
-
   console.log(id);
   daoMembers.set(id, member);
 }
@@ -37,6 +36,7 @@ export function setDaoMember(member: string): void {
 $query;
 export function getMembers(principal: Principal): string {
   if (!daoMembers.has(principal.toString())) return 'Not found';
+  console.log(daoMembers);
   return daoMembers.get(principal.toString())!;
 }
 

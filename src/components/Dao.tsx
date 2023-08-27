@@ -6,20 +6,27 @@ import { Principal } from '@dfinity/principal';
 
 function Dao() {
   const { authClient } = useAuthContext();
-  const [auth, setAuth] = useState<Auth | null>(null);
   const [formOneInput, setFromOneIput] = useState('');
   const [formTwoInput, setFromTwoIput] = useState('');
-
-  useEffect(() => {
+  function handleFormOne() {
     if (authClient) {
-      const { actor, identity, principal, isAnonymousUser } =
-        authHelper(authClient);
-      console.log(principal.toString());
-      if (isAnonymousUser) setAuth(null);
-      else setAuth({ actor, identity, principal, isAnonymousUser });
-    }
-  }, [authClient]);
-
+      const { actor } = authHelper(authClient);
+      actor.setDaoMember(formOneInput);
+      setFromOneIput('');
+      toast.success('Added successfully!');
+    } else toast.error('Are you logged in?');
+  }
+  async function handleFormTwo() {
+    if (authClient) {
+      const { actor } = authHelper(authClient);
+      const user = (await actor.getMembers(
+        Principal.fromText(formTwoInput),
+      )) as string;
+      setFromTwoIput('');
+      console.log(user);
+      toast('username ' + user);
+    } else toast.error('Are you logged in?');
+  }
   return (
     <>
       <h1 style={{ textAlign: 'center' }}>
@@ -38,16 +45,7 @@ function Dao() {
               value={formOneInput}
               onChange={(e) => setFromOneIput(e.target.value)}
             />
-            <input
-              type="button"
-              value="Submit"
-              onClick={() => {
-                if (auth) {
-                  auth.actor.setDaoMember(formOneInput);
-                  setFromOneIput('');
-                }
-              }}
-            />
+            <input type="button" value="Submit" onClick={handleFormOne} />
           </form>
         </div>
         <div className="card">
@@ -66,13 +64,7 @@ function Dao() {
               type="button"
               value="Submit"
               onClick={async () => {
-                if (auth) {
-                  const user = await auth.actor.getMembers(
-                    Principal.fromText(formTwoInput),
-                  );
-                  setFromTwoIput('');
-                  console.log(user);
-                }
+                handleFormTwo();
               }}
             />
           </form>

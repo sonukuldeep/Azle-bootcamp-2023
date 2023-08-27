@@ -12,7 +12,7 @@ function Navbar() {
   const [loginText, setLoginText] = useState('Login');
 
   function handleLogin() {
-    if (authClient === null) return;
+    if (!authClient) return;
     if (loginText === 'Login')
       authClient.login({
         ...defaultOptions.loginOptions,
@@ -26,6 +26,7 @@ function Navbar() {
             shortPrincipal,
           });
           setLoginText(shortPrincipal);
+          console.log(principal.toText());
         },
         onError(error) {
           console.log('Error during login ' + error);
@@ -41,8 +42,9 @@ function Navbar() {
     if (authClient) {
       const { principal, isAnonymousUser } = authHelper(authClient);
       if (!isAnonymousUser) {
-        const shortPrincipal = principal.toString().slice(0, 7);
+        const shortPrincipal = principal.toString().slice(0, 5);
         setLoginText(shortPrincipal);
+        console.log(principal.toText());
       }
     }
   }, [authClient]);

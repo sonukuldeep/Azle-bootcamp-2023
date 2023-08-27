@@ -11,7 +11,7 @@ nav {
   top: 0;
   display: flex;
   align-items: center;
-  background-color: #2e9aa5;
+  background-color: #ed1e79;
 
   h1 {
     margin: 0 10px;
@@ -39,12 +39,12 @@ nav {
 
 .navbar a:hover {
   background-color: #ddd;
-  color: #2e9aa5;
+  color: #ed1e79;
 }
 
 .navbar .selected {
   background-color: #ddd;
-  color: #2e9aa5;
+  color: #ed1e79;
 }
 
 .spacer {
@@ -62,7 +62,7 @@ nav {
 
 .login-btn:hover {
   background-color: #ddd;
-  color: #2e9aa5;
+  color: #ed1e79;
 }
 
 .dao-wrapper,
@@ -111,7 +111,7 @@ nav {
 .modal-content {
   position: relative;
   background-color: #fff;
-  color: #2e9aa5;
+  color: #ed1e79;
   margin: 2rem;
   padding: 2rem;
   border-radius: 0.25rem;
