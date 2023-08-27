@@ -4,30 +4,210 @@
   box-sizing: border-box;
 }
 
-body {
+nav {
+  position: fixed;
+  width: 100vw;
+  left: 0;
+  top: 0;
   display: flex;
-  flex-direction: column;
   align-items: center;
-}
+  background-color: #2e9aa5;
 
-.wrapper {
-  h3 {
-    margin-top: 0;
+  h1 {
+    margin: 0 10px;
+    font-size: large;
   }
 
-  display: none; // ehages to grid on button press
+  .spacer {
+    flex-grow: 1;
+  }
+}
+
+.navbar {
+  overflow: hidden;
+}
+
+.navbar a {
+  float: left;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.navbar a:hover {
+  background-color: #ddd;
+  color: #2e9aa5;
+}
+
+.navbar .selected {
+  background-color: #ddd;
+  color: #2e9aa5;
+}
+
+.spacer {
+  height: 30px;
+}
+
+.login-btn {
+  padding: 14px 16px;
+  margin-right: 10px;
+  display: inline-block;
+  width: 100px;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.login-btn:hover {
+  background-color: #ddd;
+  color: #2e9aa5;
+}
+
+.dao-wrapper,
+.vote-wrapper {
+  display: grid;
   grid-template-columns: repeat(2, 1fr);
-  // align-items: center;
-  justify-content: center;
+  gap: 20px;
 
   .card {
-    margin: 5px;
-    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     border: 1px solid violet;
     border-radius: 4px;
+    height: 250px;
   }
 }
 
-.wrapper.visible {
-  display: grid;
+/* Modal */
+.modal {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  /* or center */
+  z-index: 1000;
+  /* depending on what z-index values exist in your page, in order for the modal layer to sit on top of other content */
+  overflow: auto;
+  /* enable scrolling if needed - although this is not really necessary since we are going take care of overflow in modal-content */
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modal.modal-show {
+  display: flex;
+  animation: fadeIn 0.1s ease-in-out forwards;
+}
+
+.modal.modal-hide {
+  animation: fadeOut 0.1s ease-in-out 0.1s forwards;
+}
+
+.modal-content {
+  position: relative;
+  background-color: #fff;
+  color: #2e9aa5;
+  margin: 2rem;
+  padding: 2rem;
+  border-radius: 0.25rem;
+  width: 35%;
+  max-height: 75%;
+  overflow: auto;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.modal.modal-show .modal-content {
+  animation: fadeInDown 0.3s ease-in-out forwards;
+}
+
+.modal.modal-hide .modal-content {
+  animation: fadeOutUp 0.2s ease-in-out forwards;
+}
+
+.modal-close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 1.75rem;
+  font-weight: bold;
+  padding: 0 0.75rem;
+  /* width: 2rem;
+  height: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center; */
+  color: rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  user-select: none;
+}
+
+.modal-close:hover,
+.modal-close:focus {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-3rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeOutUp {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-3rem);
+  }
+}
+
+@media(max-width: 992px) {
+
+  .modal-content {
+    width: 80%;
+  }
+}
+
+@media(max-width:767px) {
+
+  .modal-content {
+    padding: 2rem 1rem 1rem 1rem;
+    width: 90%;
+  }
+
 }
