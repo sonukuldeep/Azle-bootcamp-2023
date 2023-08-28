@@ -13,7 +13,7 @@ import {
   match,
 } from 'azle';
 //types
-type DAO_DB = Record<{ id: string; username: string }>;
+type DAO_DB = Record<{ id: Principal; username: string }>;
 type Proposal = Record<{ question: string; options: Vec<string> }>;
 type Votes = Record<{
   game: string;
@@ -21,7 +21,7 @@ type Votes = Record<{
 }>;
 
 // variables
-const daoMembers = new Map<string, string>();
+const daoMembers = new StableBTreeMap<Principal, string>(0, 1000, 100);
 const currentGame = 'puzzle';
 const proposal: Proposal = {
   question: 'What game should we develop next?',
@@ -39,23 +39,26 @@ export function whoami(): Principal {
 // but if we convert both to string it works
 // i have chck this countless times
 $update;
-export function setDaoMember(member: string): void {
-  const id = ic.caller().toString();
-  if (daoMembers.has(id) || id === '2vxsx-fae') return;
-  console.log(id);
-  daoMembers.set(id, member);
+export function setDaoMember(member: string): string {
+  const id = ic.caller();
+  if (daoMembers.containsKey(id) || id.isAnonymous()) return 'failed';
+  console.log(id.toString());
+  daoMembers.insert(id, member);
+  return 'success';
 }
 
 $query;
 export function getMember(principal: Principal): string {
-  if (!daoMembers.has(principal.toString())) return 'Not found';
-  console.log(daoMembers);
-  return daoMembers.get(principal.toString())!;
+  const member = daoMembers.get(principal);
+  return match(member, {
+    Some: (val) => val,
+    None: () => 'Not found',
+  });
 }
 
 $query;
 export function getMembers(): Vec<DAO_DB> {
-  const members = Array.from(daoMembers, ([id, username]) => ({
+  const members = Array.from(daoMembers.items(), ([id, username]) => ({
     id,
     username,
   }));
@@ -64,18 +67,18 @@ export function getMembers(): Vec<DAO_DB> {
 
 $update;
 export function updateDaoUserName(username: string): string {
-  const caller = ic.caller().toString();
-  if (!daoMembers.has(caller)) {
+  const caller = ic.caller();
+  if (!daoMembers.containsKey(caller)) {
     return 'Not found';
   }
-  daoMembers.set(caller, username);
+  daoMembers.insert(caller, username);
   return 'success';
 }
 
 $update;
 export function exitFromDao(): string {
-  const caller = ic.caller().toString();
-  const res = daoMembers.delete(caller);
+  const caller = ic.caller();
+  const res = daoMembers.remove(caller);
   return res ? 'success' : 'failed';
 }
 
@@ -101,12 +104,15 @@ $query;
 export function loadGame(): string {
   return currentGame;
 }
-
+//
+//
+//
+//
 // token related
-let tokenOwners = new StableBTreeMap<Principal, nat32>(0, 1000, 100);
+let tokenOwners = new StableBTreeMap<Principal, nat32>(1, 1000, 100);
 let symbol = 'TGS';
 let tokenName = 'Tiny game studio';
-const fossetRecord = new StableBTreeMap<Principal, nat32>(1, 1000, 100);
+const fossetRecord = new StableBTreeMap<Principal, nat32>(2, 1000, 100);
 const activeoupons = new Map<string, nat32>([
   ['1000', 1000],
   ['10', 10],

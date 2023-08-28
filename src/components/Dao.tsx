@@ -22,9 +22,10 @@ function Dao() {
       const { actor, isAnonymousUser } = authHelper(authClient);
       if (!isAnonymousUser) {
         try {
-          await actor.setDaoMember(formOneInput);
+          const res = await actor.setDaoMember(formOneInput);
           setFromOneIput('');
-          toast.success('Added successfully!');
+          if (res === 'success') toast.success('Added successfully!');
+          else toast('Error');
         } catch (error: any) {
           if (error.name === 'AgentHTTPResponseError')
             toast.error('Login expired!');

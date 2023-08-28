@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { backend } from '../declarations/backend';
+import { Principal } from '@dfinity/principal';
 
 function Members() {
   const [members, setMembers] = useState<
     | {
         username: string;
-        id: string;
+        id: Principal;
       }[]
     | null
   >(null);
@@ -23,7 +24,7 @@ function Members() {
           <Card
             key={index}
             name={member.username}
-            shortPrincipal={member.id.slice(0, 5)}
+            shortPrincipal={member.id.toString().slice(0, 5)}
           />
         ))}
       </div>
