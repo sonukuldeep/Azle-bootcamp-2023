@@ -18,7 +18,7 @@ const defaultOptions = {
     identityProvider: `http://localhost:4943?canisterId=be2us-64aaa-aaaaa-qaabq-cai#authorize`,
     // identityProvider: 'https://identity.ic0.app/#authorize',
     // Maximum authorization expiration is 8 days
-    maxTimeToLive: BigInt(1 * 60 * 1000 * 1000 * 1000), // 5min
+    maxTimeToLive: BigInt(10 * 60 * 1000 * 1000 * 1000), // 10min
   },
 };
 

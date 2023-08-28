@@ -284,3 +284,19 @@ nav {
     height: 100%;
   }
 }
+
+.fosset-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  .btns {
+    display: flex;
+    justify-content: center;
+  }
+
+  .fosset-cards {
+    display: flex;
+    justify-content: space-evenly;
+  }
+}
