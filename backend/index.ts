@@ -116,6 +116,16 @@ const fossetRecord = new StableBTreeMap<Principal, nat32>(2, 1000, 100);
 const activeoupons = new Map<string, nat32>([
   ['1000', 1000],
   ['10', 10],
+  ['eqquw', 20],
+  ['gzszk', 30],
+  ['vktch', 40],
+  ['jwkdq', 50],
+  ['lmjzh', 60],
+  ['vmere', 70],
+  ['ogcdr', 80],
+  ['ylphu', 90],
+  ['ztsax', 100],
+  ['beumm', 110],
 ]);
 
 $query;

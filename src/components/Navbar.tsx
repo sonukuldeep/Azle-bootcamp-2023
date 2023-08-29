@@ -46,6 +46,7 @@ function Navbar() {
       }
     }
   }, [authClient]);
+
   return (
     <nav>
       <header>
@@ -62,18 +63,21 @@ function Navbar() {
         <NavLink
           to="dao"
           className={({ isActive }) => (isActive ? 'selected' : '')}
+          reloadDocument
         >
           DAO
         </NavLink>
         <NavLink
           to="members"
           className={({ isActive }) => (isActive ? 'selected' : '')}
+          reloadDocument
         >
           Dao Members
         </NavLink>
         <NavLink
           to="fosset"
           className={({ isActive }) => (isActive ? 'selected' : '')}
+          reloadDocument
         >
           Fosset
         </NavLink>

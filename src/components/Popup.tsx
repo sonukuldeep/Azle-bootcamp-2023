@@ -7,7 +7,7 @@ export default function Popup({
   children: ReactNode;
   isVisible: boolean;
 }) {
-  const [modal, setModal] = useState(false);
+  const [modal, setModal] = useState(true);
   useEffect(() => {
     setModal((pre) => !pre);
   }, [isVisible]);

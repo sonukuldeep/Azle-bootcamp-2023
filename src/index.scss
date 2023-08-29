@@ -300,3 +300,66 @@ nav {
     justify-content: space-evenly;
   }
 }
+
+
+
+// styles for the game
+.canvas-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+canvas {
+  outline: 1px solid whitesmoke;
+}
+
+#character {
+  display: none;
+}
+
+.ui h1,
+.ui h2,
+.ui p {
+  color: cadetblue;
+}
+
+#gameover,
+#restart,
+#start {
+  display: none;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: antiquewhite;
+  padding: 30px;
+  border-radius: 4px;
+  min-width: 300px;
+
+}
+
+.restart-btn {
+  padding: 5px 14px;
+  color: cadetblue;
+  font-size: large;
+}
+
+#restart .score p {
+  margin: 10px;
+  font-weight: bold;
+}
+
+#gameover.activate,
+#restart.activate,
+#start.activate {
+  display: flex;
+  flex-direction: column;
+  // gap: 20px;
+  align-items: center;
+}
+
+@media (width < 768px) {
+  canvas {
+    outline: none;
+  }
+}
