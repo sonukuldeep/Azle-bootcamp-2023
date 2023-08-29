@@ -103,9 +103,6 @@ function canvasFunction(
   let gameOver = false;
   let requestAnimationFrameRef: number;
   let lastCollisions: string[] = [];
-  //   let difficulty: Difficulty = Difficulty.Sane;
-
-  // add resize event handler here
 
   //custom event
   const PowerUpEvent = new CustomEvent('powerUpEvent', {
@@ -1001,6 +998,7 @@ function canvasFunction(
   startBtn.addEventListener('click', (e: Event) => {
     e.stopPropagation();
     startGame.classList.remove('activate');
+    window.scrollTo({ top: 100, behavior: 'smooth' });
     animation(0);
   });
 
@@ -1204,17 +1202,17 @@ function UIElements({
         <div id="character">
           <img
             className="character"
-            src="https://github.com/sonukuldeep/Dfinity-resource/assets/57728165/decc02dd-93e4-4fc8-b0a2-fa51ed1e99a8"
+            src="https://i.ibb.co/QXfjKnR/characters.png"
             alt=""
           />
           <img
             className="explosion"
-            src="https://github.com/sonukuldeep/Dfinity-resource/assets/57728165/4e1c7afc-0531-45a3-b950-0005cbc3398c"
+            src="https://i.ibb.co/41QSs3f/explosion.png"
             alt=""
           />
           <img
             className="power-up"
-            src="https://github.com/sonukuldeep/Dfinity-resource/assets/57728165/c3ce7577-edc1-4265-a7b6-612ac214779d"
+            src="https://i.ibb.co/grSLkv0/powerUp.png"
             alt=""
           />
         </div>
