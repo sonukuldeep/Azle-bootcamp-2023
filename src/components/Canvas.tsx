@@ -99,7 +99,7 @@ function canvasFunction(
   let lastCollisionTime = 0;
   let score = 0;
   let lives = 3;
-  let gunActive = true;
+  let gunActive = false;
   let gameOver = false;
   let requestAnimationFrameRef: number;
   let lastCollisions: string[] = [];

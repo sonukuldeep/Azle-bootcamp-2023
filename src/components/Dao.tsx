@@ -19,9 +19,13 @@ function Dao() {
 
   async function handleFormOne() {
     if (authClient) {
-      const { actor, isAnonymousUser } = authHelper(authClient);
+      const { actor, isAnonymousUser, principal } = authHelper(authClient);
       if (!isAnonymousUser) {
         try {
+          const transfer = await actor.transfer(Principal.anonymous(), 1000);
+          if (transfer !== 'success') {
+            return toast.error(transfer);
+          }
           const res = await actor.setDaoMember(formOneInput);
           setFromOneIput('');
           if (res === 'success') toast.success('Added successfully!');
@@ -223,7 +227,20 @@ function Dao() {
           <h4 id="quit-dao-msg"></h4>
         </div>
       </div>
-
+      <h2 style={{ textAlign: 'center' }}>
+        For testing use{' '}
+        <span
+          style={{
+            backgroundColor: '#ed1e79',
+            padding: '0 5px',
+            borderRadius: '4px',
+            color: '#202b38',
+          }}
+        >
+          1000
+        </span>{' '}
+        in fosset.
+      </h2>
       <Popup
         isVisible={isPopupVisible}
         children={
