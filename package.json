@@ -21,7 +21,6 @@
     "react-dom": "^18.2.0",
     "react-hot-toast": "^2.4.1",
     "react-router-dom": "^6.15.0",
-    "react-unity-webgl": "^9.4.3",
     "ts-node": "10.7.0"
   },
   "devDependencies": {

@@ -7,7 +7,7 @@ import { Principal } from '@dfinity/principal';
 function Fosset() {
   const { authClient } = useAuthContext();
   const [toAddress, settoAddress] = useState('');
-  const [amount, setAmount] = useState<number | null>();
+  const [amount, setAmount] = useState('');
   const [coupon, setCoupon] = useState('');
 
   async function checkBalance() {
@@ -45,9 +45,10 @@ function Fosset() {
       const { actor, isAnonymousUser } = authHelper(authClient);
       if (!isAnonymousUser) {
         try {
+          const transferAmount = Number.isNaN(amount) ? 0 : Number(amount);
           const res = await actor.transfer(
             Principal.fromText(toAddress),
-            Number(amount),
+            Number(transferAmount),
           );
           settoAddress('');
           toast.success(res);
@@ -99,11 +100,11 @@ function Fosset() {
               />
               <label htmlFor="username">Amount:</label>
               <input
-                type="number"
+                type="text"
                 name="username"
                 required
-                value={Number(amount)}
-                onChange={(e) => setAmount(Number(e.target.value))}
+                value={amount}
+                onChange={(e) => setAmount(e.target.value)}
               />
               <input type="button" value="Submit" onClick={handleTransfer} />
             </form>

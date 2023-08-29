@@ -12,7 +12,7 @@ service : () -> {
   getTokenSymbol : () -> (text) query;
   gimmeGimme : () -> (text);
   loadGame : () -> (text) query;
-  setDaoMember : (text) -> ();
+  setDaoMember : (text) -> (text);
   transfer : (principal, nat32) -> (text);
   updateDaoUserName : (text) -> (text);
   voteForGame : (text) -> ();
