@@ -42,15 +42,17 @@ function Card({
   shortPrincipal: string;
 }) {
   return (
-    <div className="card">
-      <div className="image-wrapper">
-        <img
-          src={`https://api.dicebear.com/6.x/pixel-art/svg?seed=${name}`}
-          alt="avator"
-        />
+    <div className="member-wrapper">
+      <div className="card">
+        <div className="image-wrapper">
+          <img
+            src={`https://api.dicebear.com/6.x/pixel-art/svg?seed=${name}`}
+            alt="avator"
+          />
+        </div>
+        <h3>Name: {name}</h3>
+        <p>Wallet: {shortPrincipal}</p>
       </div>
-      <h3>Name: {name}</h3>
-      <p>Wallet: {shortPrincipal}</p>
     </div>
   );
 }

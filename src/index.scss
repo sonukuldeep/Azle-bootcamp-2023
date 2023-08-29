@@ -246,7 +246,10 @@ nav {
 .member-wrapper {
   margin-top: 20px;
   display: flex;
-
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  min-height: 50vh;
 
   .card {
 

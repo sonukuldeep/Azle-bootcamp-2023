@@ -13,6 +13,24 @@ function App() {
         <Route path="members" element={<Members />} />
         <Route path="fosset" element={<Fosset />} />
       </Routes>
+      <h2 style={{ textAlign: 'center' }}>
+        Reach me at{' '}
+        <a
+          href="https://twitter.com/waveypants"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Twitter
+        </a>{' '}
+        or{' '}
+        <a
+          href="https://codethatdev.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          My website
+        </a>
+      </h2>
     </BrowserRouter>
   );
 }
