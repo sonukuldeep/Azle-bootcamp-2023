@@ -26,11 +26,11 @@ Run the following commands to deploy on IC:
 ```sh
 dfx deploy --network ic
 ```
-It is like the above command may fail. If this is the case check the code again
+It is likely the above command may fail. If this is the case check the code again
 
 Try deploying canisters one at a time. Sometimes it fails for no reason
 ```sh
-dfx deploy &lt;canister name&gt; --network ic
+dfx deploy <canister name> --network ic
 ```
 
 ## Check website
