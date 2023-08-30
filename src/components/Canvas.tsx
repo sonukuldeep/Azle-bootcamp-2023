@@ -1202,17 +1202,17 @@ function UIElements({
         <div id="character">
           <img
             className="character"
-            src="https://i.ibb.co/QXfjKnR/characters.png"
+            src="https://github.com/sonukuldeep/Dfinity-resource/assets/57728165/decc02dd-93e4-4fc8-b0a2-fa51ed1e99a8"
             alt=""
           />
           <img
             className="explosion"
-            src="https://i.ibb.co/41QSs3f/explosion.png"
+            src="https://github.com/sonukuldeep/Dfinity-resource/assets/57728165/4e1c7afc-0531-45a3-b950-0005cbc3398c"
             alt=""
           />
           <img
             className="power-up"
-            src="https://i.ibb.co/grSLkv0/powerUp.png"
+            src="https://github.com/sonukuldeep/Dfinity-resource/assets/57728165/c3ce7577-edc1-4265-a7b6-612ac214779d"
             alt=""
           />
         </div>
